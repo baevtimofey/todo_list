@@ -1,12 +1,17 @@
-from .serializers import ToDoCreateSerializer
+from .serializers import ToDoCreateSerializer, ToDoListSerializer
 from .models import ToDo
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
-class ToDoCreateView(APIView):
-    """ Creating task """
+class ToDoCreateListView(APIView):
+    """ Creating and display tasks """
+    
+    def get(self, request):
+        tasks = ToDo.objects.all()
+        serializer = ToDoListSerializer(tasks, many=True)
+        return Response(serializer.data)
     
     def post(self, request):
         new_task = ToDo.objects.create(

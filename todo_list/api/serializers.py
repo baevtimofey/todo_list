@@ -7,3 +7,9 @@ class ToDoCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ToDo
         fields = ('id',)
+
+
+class ToDoListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ToDo
+        fields = '__all__'
