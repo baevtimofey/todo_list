@@ -1,7 +1,7 @@
 from django.urls import path
 
-from .views import CreateToDo
+from .views import ToDoCreateView
 
 urlpatterns = [
-    path('tasks/', CreateToDo.as_view()),
+    path('tasks/', ToDoCreateView.as_view()),
 ]
