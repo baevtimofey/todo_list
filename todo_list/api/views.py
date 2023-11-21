@@ -1,4 +1,6 @@
-from .serializers import ToDoCreateSerializer, ToDoListSerializer
+from .serializers import (ToDoCreateSerializer,
+                          ToDoListSerializer,
+                          ToDoDetailSerializer)
 from .models import ToDo
 
 from rest_framework.views import APIView
@@ -20,4 +22,12 @@ class ToDoCreateListView(APIView):
         )
         serializer = ToDoCreateSerializer(new_task)
         return Response(serializer.data)
+
+
+class ToDoDetailView(APIView):
+    """ Detail task """
     
+    def get(self, request, pk):
+        task = ToDo.objects.get(id=pk)
+        serializer = ToDoDetailSerializer(task)
+        return Response(serializer.data)

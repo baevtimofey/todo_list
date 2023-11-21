@@ -13,3 +13,9 @@ class ToDoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ToDo
         fields = '__all__'
+
+
+class ToDoDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ToDo
+        fields = ('id', 'title', 'description')
